@@ -9,6 +9,6 @@ body {
   width: 100%;
   background: var(--color-kiev);
   height: 64px;
-  font-family: var(--fontfamily-body);
+  font-family: var(--fontfamily-sans);
   -webkit-font-smoothing: antialiased;
 }
