@@ -12,3 +12,7 @@ body {
   font-family: var(--fontfamily-sans);
   -webkit-font-smoothing: antialiased;
 }
+
+#___gcse_0 {
+  width: 500px;
+}
