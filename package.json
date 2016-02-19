@@ -1,6 +1,6 @@
 {
   "name": "@economist/component-google-search",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "A search field with autocompletition based on GCS",
   "author": "The Economist (http://economist.com)",
   "license": "MIT",
