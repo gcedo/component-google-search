@@ -1,7 +1,7 @@
+/* global window, document */
 import React from 'react';
 import ReactDom from 'react-dom';
 import promisescript from 'promisescript';
-/* eslint-disable no-undef, no-underscore-dangle, id-match, id-length, no-console */
 
 let googleScript = null;
 export default class GoogleSearch extends React.Component {
@@ -15,7 +15,7 @@ export default class GoogleSearch extends React.Component {
       queryParameterName: React.PropTypes.string,
       language: React.PropTypes.string,
       resultsUrl: React.PropTypes.string,
-      cx: React.PropTypes.string,
+      cx: React.PropTypes.string, // eslint-disable-line id-length
       googleScriptUrl: React.PropTypes.string,
     };
   }
@@ -31,7 +31,7 @@ export default class GoogleSearch extends React.Component {
       queryParameterName: 'ss',
       language: 'en',
       resultsUrl: 'http://www.economist.com/search/',
-      cx: '013751040265774567329:pqjb-wvrj-q',
+      cx: '013751040265774567329:pqjb-wvrj-q', // eslint-disable-line id-length
       googleScriptUrl: 'www.google.com/cse/cse.js',
     };
   }
@@ -42,14 +42,15 @@ export default class GoogleSearch extends React.Component {
       // useFallback by default on SS
       useFallback: (typeof window === 'undefined'),
     };
+    this.assignRef = this.assignRef.bind(this);
   }
 
   componentDidMount() {
     this.ensureScriptHasLoaded()
       .then(() => this.displayGoogleSearch())
       .then(() => this.focusSearchField())
-      .catch((err) => {
-        console.error(err);
+      .catch((exception) => {
+        console.error(exception); // eslint-disable-line no-console
         this.setState({ useFallback: true });
       });
   }
@@ -57,8 +58,8 @@ export default class GoogleSearch extends React.Component {
   focusSearchField() {
     try {
       this.googleSearchInput.focus();
-    } catch (e) {
-      console.error(e);
+    } catch (exception) {
+      console.error(exception); // eslint-disable-line no-console
     }
   }
 
@@ -84,24 +85,28 @@ export default class GoogleSearch extends React.Component {
   ensureScriptHasLoaded() {
     if (!googleScript) {
       googleScript = new Promise((resolve, reject) => {
-        window.__gcse = {
+        window.__gcse = { // eslint-disable-line no-underscore-dangle, id-match
           parsetags: 'explicit',
-          callback: resolve,
+          callback: resolve, // eslint-disable-line id-blacklist
         };
         // Loading this script it provide us the only additional functionality
         // of autocompletition that is probably achievable by custom code using
         // the Google Search API (Probably paid version).
         const protocol = (document.location.protocol) === 'https:' ? 'https:' : 'http:';
-        const src = `${protocol}//${this.props.googleScriptUrl}?cx=${this.props.cx}`;
+        const src = `${ protocol }//${ this.props.googleScriptUrl }?cx=${ this.props.cx }`;
         promisescript({
           url: src,
           type: 'script',
-        }).catch((e) => {
-          reject(new Error(`An error occurs loading or executing Google Custom Search: ${e.message}`));
+        }).catch((exception) => {
+          reject(new Error(`An error occurs loading or executing Google Custom Search: ${ exception.message }`));
         });
       });
     }
     return googleScript;
+  }
+
+  assignRef(ref) {
+    this.googleSearchInputFallbackInput = ref;
   }
 
   render() {
@@ -122,7 +127,7 @@ export default class GoogleSearch extends React.Component {
               id="edit-search-theme-form-1"
               title="Enter the terms you wish to search for."
               className="gsc-input"
-              ref={(ref) => this.googleSearchInputFallbackInput = ref}
+              ref={this.assignRef}
             />
             <input
               id="edit-cx"
