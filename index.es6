@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDom from 'react-dom';
 import promisescript from 'promisescript';
 /* eslint-disable no-undef, no-underscore-dangle, id-match, id-length, no-console */
 
@@ -76,7 +77,8 @@ export default class GoogleSearch extends React.Component {
       },
     };
     window.google.search.cse.element.render(config);
-    this.googleSearchInput = document.querySelector('.search .gsc-search-box input.gsc-input');
+    this.googleSearchInput =
+      ReactDom.findDOMNode(this).querySelector('input[type=text]');
   }
 
   ensureScriptHasLoaded() {
