@@ -1,36 +1,37 @@
-@import "@economist/component-palette";
-@import "@economist/component-typography";
+@import '@economist/component-palette';
+@import '@economist/component-typography';
 
 .google-search {
   display: table-cell;
   vertical-align: middle;
+  width: 100%;
   color: var(--search__color, var(--color-thimphu));
   background: var(--search--close__background, var(--color-thimphu));
-  width: 100%;
-}
-
-td.gsc-input {
-  background: none !important;
-}
-
-.google-search .gsc-search-box {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  float: left;
-}
-
-#google-search-box {
   border-top: 1px solid var(--search__border-top-color, var(--color-berlin));
 }
 
-.google-search input.gsc-input {
-  border: none !important;
-  color: var(--search__input-color, var(--color-kiev));
-  padding: 0 !important;
-  outline: none;
-  font-size: 2em;
+.google-search .gsc-search-box {
+  float: left;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+/* stylelint-disable selector-no-type */
+
+.google-search input.gsc-input {
+  padding: 0;
+  outline: none;
+  color: var(--search__input-color, var(--color-kiev));
+  font-size: 2em;
+  border: none;
+}
+
+td.gsc-input {
+  background: none;
+}
+
+/* stylelint-enable selector-no-type */
 
 .gsc-input {
   width: 100%;
