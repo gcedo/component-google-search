@@ -2,7 +2,9 @@ import 'babel-polyfill';
 import Googlesearch from '../src';
 import React from 'react';
 import chai from 'chai';
-chai.should();
+import chaiEnzyme from 'chai-enzyme';
+chai.use(chaiEnzyme).should();
+
 describe('Googlesearch', () => {
   it('is compatible with React.Component', () => {
     Googlesearch.should.be.a('function')
