@@ -79,7 +79,7 @@ export default class GoogleSearch extends React.Component {
     };
     window.google.search.cse.element.render(config);
     this.googleSearchInput =
-      ReactDom.findDOMNode(this).querySelector('input[type=text]');
+      ReactDom.findDOMNode(this).querySelector('input[name=search]');
   }
 
   ensureScriptHasLoaded() {
