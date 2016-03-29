@@ -149,7 +149,7 @@
     "stylelint": "^5.2.1",
     "stylelint-config-strict": "^4.0.0",
     "svg4everybody": "^2.0.1",
-    "validate-commit-msg": "^2.4.0",
+    "validate-commit-msg": "^2.4.1",
     "watchify": "^3.7.0"
   }
 }
